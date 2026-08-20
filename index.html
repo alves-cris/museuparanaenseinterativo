@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museu Virtual da História e Território do Paraná</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Pórtico de Entrada do Museu -->
+  <header class="museum-header">
+    <div class="header-overlay">
+      <span class="museum-badge">EXPOSIÇÃO PERMANENTE</span>
+      <h1>MUSEU DA IDENTIDADE PARANAENSE</h1>
+      <p class="subtitle">Memória, Território, Conflitos e as Ondas Migratórias que Construíram o Estado</p>
+      <div class="decorative-line"></div>
+    </div>
+  </header>
+
+  <!-- Pavilhões de Navegação (As 5 Salas Temáticas) -->
+  <nav class="museum-nav">
+    <button class="nav-btn active" onclick="mudarSala('sala1')">Sala I: Motores do Paraná</button>
+    <button class="nav-btn" onclick="mudarSala('sala2')">Sala II: Fronteiras em Chamas</button>
+    <button class="nav-btn" onclick="mudarSala('sala3')">Sala III: Diáspora Europeia & Asiática</button>
+    <button class="nav-btn" onclick="mudarSala('sala4')">Sala IV: Conquista do Norte e Oeste</button>
+    <button class="nav-btn" onclick="mudarSala('sala5')">Sala V: Raízes Negras</button>
+  </nav>
+
+  <!-- Galerias de Exposição -->
+  <main class="museum-gallery">
+    
+    <!-- SALA 1: OS MOTORES DO PARANÁ -->
+    <section id="sala1" class="sala ativa">
+      <div class="sala-title-block">
+        <span class="sala-number">SALA I</span>
+        <h2>Os Motores do Paraná: Mate, Madeira e Café</h2>
+        <p class="sala-lead">A tríade econômica que moldou a geografia, impulsionou a infraestrutura ferroviária e financiou a emancipação política e a urbanização do estado.</p>
+      </div>
+
+      <div class="exhibit-grid">
+        <article class="exhibit-card">
+          <div class="image-placeholder mate-bg"><span>Acervo Histórico: O Ciclo da Erva-Mate</span></div>
+          <div class="exhibit-content">
+            <h3>O Ouro Verde e a Emancipação</h3>
+            <p>Primeiro grande motor econômico do Paraná autônomo, a erva-mate representou até 85% da economia local no século XIX. Foi o esteio financeiro que viabilizou investimentos cruciais na Estrada da Graciosa e na icônica Ferrovia Curitiba-Paranaguá, conectando o planalto ao porto.</p>
+          </div>
+        </article>
+
+        <article class="exhibit-card">
+          <div class="image-placeholder madeira-bg"><span>Registro Fotográfico: As Serrarias de Araucária</span></div>
+          <div class="exhibit-content">
+            <h3>A Exploração Madeireira e a Linha de Frente</h3>
+            <p>O avanço sobre as densas florestas de Araucária abasteceu o mercado da construção civil nacional e internacional. Este ciclo empurrou as frentes de povoamento em direção ao centro-sul e oeste, alterando profundamente a paisagem natural e abrindo clareiras para os ciclos agrícolas seguintes.</p>
+          </div>
+        </article>
+
+        <article class="exhibit-card">
+          <div class="image-placeholder cafe-bg"><span>Documento Visual: Expansão Cafeeira</span></div>
+          <div class="exhibit-content">
+            <h3>A Epopeia do Café e a Geada Negra</h3>
+            <p>A terra roxa do Norte Pioneiro e Norte Novo transformou o Paraná no maior produtor mundial de café em meados do século XX. O ciclo financiou a modernização urbana de polos como Londrina e Maringá antes de sofrer um colapso fulminante com a histórica catástrofe climática da Geada Negra de 1975.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SALA 2: FRONTEIRAS EM CHAMAS -->
+    <section id="sala2" class="sala">
+      <div class="sala-title-block">
+        <span class="sala-number">SALA II</span>
+        <h2>Fronteiras em Chamas: Conflitos e Território</h2>
+        <p class="sala-lead">As violentas disputas geopolíticas, os choques de fronteiras agrícolas e os movimentos messiânicos de resistência camponesa.</p>
+      </div>
+
+      <div class="exhibit-grid large-layout">
+        <article class="exhibit-card wide">
+          <div class="image-placeholder contestado-bg"><span>Painel Histórico: Cartografia do Conflito do Contestado</span></div>
+          <div class="exhibit-content">
+            <h3>Guerra do Contestado (1912-1916): Terra e Fé</h3>
+            <p>Um dos maiores conflitos sociais da história brasileira, motivado pela violenta expropriação de terras de posseiros e camponeses caboclos para a construção da estrada de ferro Brazil Railway Company. Sob a liderança messiânica de monges como José Maria, milhares resistiram ao poder das oligarquias e das tropas federais na região fronteiriça entre Paraná e Santa Catarina.</p>
+          </div>
+        </article>
+
+        <article class="exhibit-card">
+          <div class="image-placeholder lapa-bg"><span>Monumento Virtual: O Cerco da Lapa</span></div>
+          <div class="exhibit-content">
+            <h3>O Cerco da Lapa e a Revolução Federalista</h3>
+            <p>Em 1894, a cidade da Lapa tornou-se a barreira de sangue que impediu o avanço das tropas maragatas em direção à capital da República. A resistência heroica de 26 dias liderada pelo General Gomes Carneiro moldou os rumos políticos da jovem federação brasileira.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SALA 3: DIÁSPORA EUROPEIA E ASIÁTICA -->
+    <section id="sala3" class="sala">
+      <div class="sala-title-block">
+        <span class="sala-number">SALA III</span>
+        <h2>Diáspora Europeia e Asiática</h2>
+        <p class="sala-lead">A reconstrução de identidades, tradições e sistemas de policultura trazidos pelas grandes correntes migratórias transoceânicas.</p>
+      </div>
+
+      <!-- Integração do Infográfico de Migração Japonesa -->
+      <div class="infographic-container">
+        <div class="info-header">
+          <span class="info-tag">MAPA DE FLUXO INTEGRADO</span>
+          <h3>Documento Visual Analisado: Migração Japonesa no Paraná</h3>
+        </div>
+        <div class="info-body-grid">
+          <div class="info-text-zone">
+            <h4>Cronologia da Diáspora Japonesa</h4>
+            <ul>
+              <li><strong>1908 (O Marco):</strong> Chegada do navio Kasato Maru ao Brasil, iniciando a corrente imigratória.</li>
+              <li><strong>1915 (Norte Pioneiro):</strong> Primeiros núcleos em Cornélio Procópio e Santo Antônio da Platina, focados fortemente na cafeicultura.</li>
+              <li><strong>1930-1940 (Expansão):</strong> Deslocamento para o Oeste Paranaense e região de Maringá, diversificando para a produção de algodão.</li>
+              <li><strong>1940-1960 (Urbanização):</strong> Consolidação comercial e industrial na Região Metropolitana de Curitiba, Litoral e grandes polos urbanos.</li>
+            </ul>
+          </div>
+          <div class="info-highlights">
+            <h4>Contribuições Culturais e Agrícolas</h4>
+            <p>Introdução de técnicas revolucionárias de manejo de solo, hortifrutigranjeiros, cultivo de chá e o cooperativismo. Consolidação de tradições artísticas e gastronômicas (festivais <em>Bunkyos</em>, culinária e filosofia comunitária baseada na disciplina e respeito).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="exhibit-grid">
+        <article class="exhibit-card">
+          <div class="image-placeholder eslava-bg"><span>Etnografia: Arquitetura Eslava no Planalto</span></div>
+          <div class="exhibit-content">
+            <h3>Poloneses e Ucranianos no Planalto de Curitiba</h3>
+            <p>Responsáveis pela introdução das carroças de mola e pela arquitetura de troncos, os imigrantes eslavos estruturaram a agricultura de abastecimento ao redor da capital, preservando traços linguísticos, religiosos e artísticos profundos (como as pêssankas).</p>
+          </div>
+        </article>
+
+        <article class="exhibit-card">
+          <div class="image-placeholder mediterranea-bg"><span>Acervo Colonial: Imigração Italiana e Alemã</span></div>
+          <div class="exhibit-content">
+            <h3>Italianos e Alemães: Vinhedos e Cooperativas</h3>
+            <p>Seja nas colônias da Região Metropolitana ou nos vales fluviais, a imigração italiana trouxe a cultura da vitivinicultura, enquanto os núcleos germânicos impulsionaram as primeiras indústrias manufatureiras e modelos sólidos de associativismo agrícola.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SALA 4: A CONQUISTA DO NORTE E OESTE: MIGRAÇÕES INTERNAS -->
+    <section id="sala4" class="sala">
+      <div class="sala-title-block">
+        <span class="sala-number">SALA IV</span>
+        <h2>A Conquista do Norte e Oeste: Migrações Internas</h2>
+        <p class="sala-lead">O avanço das frentes pioneiras, o papel das companhias colonizadoras e as correntes migratórias interestaduais que desenharam o novo mapa paranaense.</p>
+      </div>
+
+      <!-- Integração da Linha do Tempo de Migrações Internas extraída dos documentos -->
+      <div class="infographic-container highlight-timeline">
+        <div class="info-header">
+          <span class="info-tag">DINÂMICA DE OCUPAÇÃO DO TERRITÓRIO</span>
+          <h3>Linha do Tempo: Fluxos Migratórios Interestaduais</h3>
+        </div>
+        <div class="timeline-museum-scroll">
+          <div class="timeline-node">
+            <span class="node-date">1850 - 1880</span>
+            <h5>Entrada dos Paulistas</h5>
+            <p>Penetração no Norte Pioneiro e Campos Gerais em busca de terras férteis para lavouras de café e pecuária.</p>
+          </div>
+          <div class="timeline-node">
+            <span class="node-date">1880 - 1920</span>
+            <h5>Migração Mineira</h5>
+            <p>Deslocamento rumo ao Centro-Sul e Sudoeste, atraídos pela exploração madeireira e abertura de novas estradas.</p>
+          </div>
+          <div class="timeline-node">
+            <span class="node-date">1910 - 1940</span>
+            <h5>O Fluxo Cearense e Nordestino</h5>
+            <p>Fixação no Norte Pioneiro e Centro-Sul para o trabalho braçal exaustivo na derrubada de matas e plantio do café.</p>
+          </div>
+          <div class="timeline-node">
+            <span class="node-date">1940 - 1980</span>
+            <h5>Expansão Gaúcha e Catarinense</h5>
+            <p>Ocupação em massa do Sudoeste e Oeste Paranaense. Introdução da suinocultura, avicultura e transição para o modelo de minifúndios e posterior agronegócio da soja.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="exhibit-grid">
+        <article class="exhibit-card">
+          <div class="image-placeholder ctnp-bg"><span>Documento Histórico: Propaganda de Venda de Lotes</span></div>
+          <div class="exhibit-content">
+            <h3>A Companhia de Terras Norte do Paraná (CTNP)</h3>
+            <p>A colonização planejada através do capital britânico organizou a venda de pequenos lotes e estruturou as ferrovias. O modelo evitou inicialmente os grandes latifúndios, promovendo um crescimento urbano em rede que deu origem a cidades-jardim como Maringá, Londrina e Apucarana.</p>
+          </div>
+        </article>
+
+        <article class="exhibit-card">
+          <div class="image-placeholder exodo-bg"><span>Análise Geográfica: Êxodo Rural e Urbanização</span></div>
+          <div class="exhibit-content">
+            <h3>A Modernização Agrícola e o Impacto Socioambiental</h3>
+            <p>A transição da economia cafeeira para a monocultura mecanizada da soja (a partir de 1970) causou um intenso êxodo rural. Pequenos produtores migraram para as cidades, acelerando a urbanização de polos como Cascavel, Toledo e Foz do Iguaçu, gerando também profundos desmatamentos e expulsão de comunidades indígenas originárias (como os Xetá).</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SALA 5: RAÍZES NEGRAS E A IDENTIDADE PARANAENSE -->
+    <section id="sala5" class="sala">
+      <div class="sala-title-block">
+        <span class="sala-number">SALA V</span>
+        <h2>Raízes Negras e a Identidade Paranaense</h2>
+        <p class="sala-lead">O protagonismo da população negra na fundação econômica, material e cultural do Paraná, combatendo o mito histórico do branqueamento do estado.</p>
+      </div>
+
+      <div class="exhibit-grid">
+        <article class="exhibit-card">
+          <div class="image-placeholder quilombo-bg"><span>Cartografia Social: Territórios Quilombolas do Paraná</span></div>
+          <div class="exhibit-content">
+            <h3>Comunidades Quilombolas e Resistência Ancestral</h3>
+            <p>Segundo dados do IBGE, o Paraná abriga dezenas de comunidades quilombolas certificadas. Territórios como o <em>Paiol de Telha</em> (Reserva do Iguaçu) e a <em>Família Xavier</em> (Arapoti) representam a luta histórica pelo direito à terra, a preservação do patrimônio cultural imaterial, os saberes da medicina tradicional e a culinária crioula paranaense.</p>
+          </div>
+        </article>
+
+        <article class="exhibit-card">
+          <div class="image-placeholder congada-bg"><span>Registro Etnográfico: Festa de São Benedito</span></div>
+          <div class="exhibit-content">
+            <h3>Patrimônio Afro-Paranaense: Da Lapa a Paranaguá</h3>
+            <p>O trabalho de homens e mulheres escravizados ou livres foi a base das charqueadas coloniais, dos engenhos de mate e da construção dos caminhos de tropas. Essa presença reverbera fortemente nas Congadas da Lapa, nas rodas de capoeira litorâneas e nos cultos tradicionais que combatem secularmente o apagamento histórico.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Rodapé Institucional -->
+  <footer class="museum-footer">
+    <div class="footer-decor"></div>
+    <p>© 2026 Pavilhão Histórico Digital do Paraná • Curadoria: 1ª Série do Ensino Médio</p>
+    <p class="subfooter">Projeto de História, Geografia e Sociedade • Hospedado com Orgulho no GitHub Pages</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
