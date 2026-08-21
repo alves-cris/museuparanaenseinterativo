@@ -368,3 +368,31 @@ body {
   border: 1px solid var(--dark-bronze);
   margin-bottom: 1rem;
 }
+
+/* RODAPÉ DO PROJETO ESCOLAR */
+.rodape-projeto {
+    background-color: var(--bg-dark);
+    color: #a0aec0;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+    border-top: 3px solid var(--dourado);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.rodape-projeto p {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.rodape-destaque {
+    color: var(--dourado);
+    font-weight: 600;
+}
+
+.rodape-separador {
+    color: var(--verde-parana);
+    margin: 0 8px;
+    font-weight: bold;
+}
