@@ -176,11 +176,13 @@
             overflow: hidden;
             background: #f8f9fa;
             border: 1px solid #e9ecef;
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer; /* Indica que a imagem é clicável */
         }
 
         .card-foto:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
         }
 
         .card-foto img {
@@ -212,9 +214,68 @@
             text-decoration: underline;
         }
 
+        /* MODAL / LIGHTBOX (AMPLIAR FOTO) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-conteudo {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            animation: zoomIn 0.3s ease;
+        }
+
+        #modal-legenda {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 15px 0;
+            font-size: 1rem;
+        }
+
+        .fechar-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .fechar-modal:hover,
+        .fechar-modal:focus {
+            color: var(--dourado);
+            text-decoration: none;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
         @media (max-width: 768px) {
             .portal-titulo { font-size: 2rem; }
             .sala { padding: 20px; }
+            .modal-conteudo { max-width: 95%; }
         }
     </style>
 </head>
@@ -222,7 +283,6 @@
 
     <!-- TELA INICIAL / PORTAL -->
     <header id="portal-inicial">
-        <!-- IMAGEM DOS SÍMBOLOS DO PARANÁ (CAMINHO ATUALIZADO) -->
         <div class="simbolos-container">
             <img src="images/simbolos.png" alt="Explorando Nossos Símbolos: Paraná" class="img-simbolos-banner">
         </div>
@@ -265,7 +325,7 @@
                 <p>Atualmente, o Paraná abriga dezenas de comunidades remanescentes de quilombos espalhadas do Vale do Ribeira aos Campos Gerais e Litoral. A resistência quilombola manifesta-se no cotidiano: na preservação da agricultura familiar sustentável, no repasse oral de saberes entre gerações e na manutenção de expressões culturais únicas, como as variadas manifestações do Fandango e rodas comunitárias.</p>
             </div>
 
-            <h3 class="galeria-titulo">Acervo da Sala 1</h3>
+            <h3 class="galeria-titulo">Acervo da Sala 1 (Clique na foto para ampliar)</h3>
             <div class="galeria">
                 <figure class="card-foto"><img src="images/Mapa_Paraná_comunidades_quilombolas.jpg" alt="Mapa Paraná comunidades quilombolas"><figcaption>Mapa_Paraná_comunidades_quilombolas.jpg</figcaption></figure>
                 <figure class="card-foto"><img src="images/Mapa_comunidades_quilombolas.jpg" alt="Mapa comunidades quilombolas"><figcaption>Mapa_comunidades_quilombolas.jpg</figcaption></figure>
@@ -294,7 +354,7 @@
                 <p>Paralelamente, a imigração japonesa teve papel crucial, fixando-se especialmente no Norte paranaense (como em Londrina e Maringá) e introduzindo técnicas agrícolas revolucionárias, diversificando culturas e enriquecendo a gastronomia e os costumes. A convivência entre essas diferentes matrizes culturais gerou um mosaico étnico que se reflete na arquitetura, nas festas religiosas e na organização comunitária do estado contemporâneo.</p>
             </div>
 
-            <h3 class="galeria-titulo">Acervo da Sala 2</h3>
+            <h3 class="galeria-titulo">Acervo da Sala 2 (Clique na foto para ampliar)</h3>
             <div class="galeria">
                 <figure class="card-foto"><img src="images/migração_japonesa_paraná.jpeg" alt="Imigração Japonesa no Paraná"><figcaption>migração_japonesa_paraná.jpeg</figcaption></figure>
                 <figure class="card-foto"><img src="images/Formação_colônias_sala2.jpg" alt="Formação das Colônias"><figcaption>Formação_colônias_sala2.jpg</figcaption></figure>
@@ -313,7 +373,7 @@
                 <p>Empresas privadas de colonização lotearam vastas extensões de terra, atraindo famílias em busca de prosperidade. O encontro dessas diferentes identidades regionais brasileiras gerou um ritmo acelerado de urbanização, criando cidades planejadas no meio da mata e estabelecendo novos costumes de trabalho e integração cultural no interior do estado.</p>
             </div>
 
-            <h3 class="galeria-titulo">Acervo da Sala 3</h3>
+            <h3 class="galeria-titulo">Acervo da Sala 3 (Clique na foto para ampliar)</h3>
             <div class="galeria">
                 <figure class="card-foto"><img src="images/migração_interna.jpeg" alt="Migração Interna no Paraná"><figcaption>migração_interna.jpeg</figcaption></figure>
             </div>
@@ -329,7 +389,7 @@
                 <p>Na região limítrofe entre Paraná e Santa Catarina, eclodiu a Guerra do Contestado (1912–1916), um conflito socio-religioso e messiânico liderado por figuras como o Monge João Maria. O conflito envolveu milhares de camponeses despossuídos e resultou no emprego de modernas tecnologias militares da época, incluindo o uso inédito da aviação em conflitos na América do Sul.</p>
             </div>
 
-            <h3 class="galeria-titulo">Acervo da Sala 4</h3>
+            <h3 class="galeria-titulo">Acervo da Sala 4 (Clique na foto para ampliar)</h3>
             <div class="galeria">
                 <figure class="card-foto"><img src="images/cerco_lapa.jpg" alt="O Cerco da Lapa"><figcaption>cerco_lapa.jpg</figcaption></figure>
                 <figure class="card-foto"><img src="images/Monge_João_Maria.png" alt="Monge João Maria"><figcaption>Monge_João_Maria.png</figcaption></figure>
@@ -347,7 +407,7 @@
                 <p>Na sequência, a exploração intensa das florestas de Araucária levou ao ciclo da Madeira, abastecendo indústrias e abrindo clareiras para novas povoações. Por fim, o avanço da cafeicultura no Norte transformou a economia paranaense em uma potência agrária nacional. Essa transição entre mateiros, vaqueanos e cafeicultores desenhou o mapa definitivo do desenvolvimento regional.</p>
             </div>
 
-            <h3 class="galeria-titulo">Acervo da Sala 5</h3>
+            <h3 class="galeria-titulo">Acervo da Sala 5 (Clique na foto para ampliar)</h3>
             <div class="galeria">
                 <figure class="card-foto"><img src="images/ocupação_do_territoriopr.jpeg" alt="Ocupação do Território Paranaense"><figcaption>ocupação_do_territoriopr.jpeg</figcaption></figure>
                 <figure class="card-foto"><img src="images/Grupo_vaqueanos.jpg" alt="Grupo de Vaqueanos"><figcaption>Grupo_vaqueanos.jpg</figcaption></figure>
@@ -355,6 +415,45 @@
             <a href="#portal-inicial" class="btn-voltar">↑ Voltar ao Portal Inicial</a>
         </section>
     </main>
+
+    <!-- ESTRUTURA DA JANELA MODAL PARA VER FOTO INTEIRA -->
+    <div id="modal-imagem" class="modal">
+        <span class="fechar-modal">&times;</span>
+        <img class="modal-conteudo" id="img-ampliada">
+        <div id="modal-legenda"></div>
+    </div>
+
+    <!-- JAVASCRIPT PARA ATIVAR O CLIQUE E AMPLIAR -->
+    <script>
+        const modal = document.getElementById("modal-imagem");
+        const imgAmpliada = document.getElementById("img-ampliada");
+        const modalLegenda = document.getElementById("modal-legenda");
+        const btnFechar = document.getElementsByClassName("fechar-modal")[0];
+
+        // Adiciona evento de clique em todos os cards de fotos das galerias
+        document.querySelectorAll('.card-foto').forEach(card => {
+            card.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                const caption = this.querySelector('figcaption');
+                
+                modal.style.display = "block";
+                imgAmpliada.src = img.src;
+                modalLegenda.innerText = caption ? caption.innerText : img.alt;
+            });
+        });
+
+        // Fechar a imagem ampliada ao clicar no X
+        btnFechar.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Fechar a imagem ampliada ao clicar fora dela (no fundo escuro)
+        modal.onclick = function(e) {
+            if (e.target !== imgAmpliada) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
