@@ -177,7 +177,7 @@
             background: #f8f9fa;
             border: 1px solid #e9ecef;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer; /* Indica que a imagem é clicável */
+            cursor: pointer;
         }
 
         .card-foto:hover {
@@ -190,6 +190,7 @@
             height: 180px;
             object-fit: cover;
             display: block;
+            pointer-events: none; /* Garante que o clique registre no card pai */
         }
 
         .card-foto figcaption {
@@ -199,6 +200,7 @@
             word-break: break-all;
             text-align: center;
             background: #fff;
+            pointer-events: none;
         }
 
         .btn-voltar {
@@ -218,64 +220,62 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 9999;
-            padding-top: 50px;
-            left: 0;
+            z-index: 99999;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.9);
+            background-color: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .modal.ativo {
+            display: flex;
         }
 
         .modal-conteudo {
-            margin: auto;
-            display: block;
             max-width: 90%;
             max-height: 80vh;
             border-radius: 8px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
-            animation: zoomIn 0.3s ease;
+            box-shadow: 0 0 25px rgba(255,255,255,0.2);
+            object-fit: contain;
+            animation: zoomIn 0.25s ease;
         }
 
         #modal-legenda {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
+            color: #fff;
+            margin-top: 15px;
+            font-size: 1.1rem;
             text-align: center;
-            color: #ccc;
-            padding: 15px 0;
-            font-size: 1rem;
+            max-width: 80%;
         }
 
         .fechar-modal {
             position: absolute;
             top: 20px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
+            right: 30px;
+            color: #fff;
+            font-size: 45px;
             font-weight: bold;
-            transition: 0.3s;
             cursor: pointer;
+            user-select: none;
         }
 
-        .fechar-modal:hover,
-        .fechar-modal:focus {
+        .fechar-modal:hover {
             color: var(--dourado);
-            text-decoration: none;
         }
 
         @keyframes zoomIn {
-            from { transform: scale(0.7); opacity: 0; }
+            from { transform: scale(0.8); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
         @media (max-width: 768px) {
             .portal-titulo { font-size: 2rem; }
             .sala { padding: 20px; }
-            .modal-conteudo { max-width: 95%; }
         }
     </style>
 </head>
@@ -284,7 +284,11 @@
     <!-- TELA INICIAL / PORTAL -->
     <header id="portal-inicial">
         <div class="simbolos-container">
-            <img src="images/simbolos.png" alt="Explorando Nossos Símbolos: Paraná" class="img-simbolos-banner">
+            <!-- Tentativa com 'simbolos.png', com tratamento de erro em caso de maiúscula/outro nome -->
+            <img src="images/simbolos.png" 
+                 onerror="this.onerror=null; this.src='images/Simbolos.png';" 
+                 alt="Explorando Nossos Símbolos: Paraná" 
+                 class="img-simbolos-banner">
         </div>
 
         <h1 class="portal-titulo">Memória e Território</h1>
@@ -386,7 +390,7 @@
             <h2>Fronteiras em Chamas: Conflitos e Território</h2>
             <div class="text-content">
                 <p>A consolidação das fronteiras do Paraná e a posse da terra foram demarcadas por momentos violentos e disputas geopolíticas marcantes. Entre 1893 e 1894, a Revolução Federalista transformou a cidade da Lapa em um divisor de águas histórico no episódio conhecido como Cerco da Lapa, onde tropas conteram o avanço de maragatos em direção à capital do país.</p>
-                <p>Na região limítrofe entre Paraná e Santa Catarina, eclodiu a Guerra do Contestado (1912–1916), um conflito socio-religioso e messiânico liderado por figuras como o Monge João Maria. O conflito envolveu milhares de camponeses despossuídos e resultou no emprego de modernas tecnologias militares da época, incluindo o uso inédito da aviação em conflitos na América do Sul.</p>
+                <p>Na região limítrofe entre Paraná e Santa Catarina, eclodiu a Guerra do Contestado (1912–1916), um conflito socio-religioso e messiânico liderado por figuras como o Monge João Maria. O conflito envolvou milhares de camponeses despossuídos e resultou no emprego de modernas tecnologias militares da época, incluindo o uso inédito da aviação em conflitos na América do Sul.</p>
             </div>
 
             <h3 class="galeria-titulo">Acervo da Sala 4 (Clique na foto para ampliar)</h3>
@@ -416,43 +420,47 @@
         </section>
     </main>
 
-    <!-- ESTRUTURA DA JANELA MODAL PARA VER FOTO INTEIRA -->
+    <!-- MODAL / JANELA PARA AMPLIAR A IMAGEM -->
     <div id="modal-imagem" class="modal">
-        <span class="fechar-modal">&times;</span>
+        <span class="fechar-modal" id="btn-fechar">&times;</span>
         <img class="modal-conteudo" id="img-ampliada">
         <div id="modal-legenda"></div>
     </div>
 
-    <!-- JAVASCRIPT PARA ATIVAR O CLIQUE E AMPLIAR -->
+    <!-- JAVASCRIPT ATUALIZADO -->
     <script>
-        const modal = document.getElementById("modal-imagem");
-        const imgAmpliada = document.getElementById("img-ampliada");
-        const modalLegenda = document.getElementById("modal-legenda");
-        const btnFechar = document.getElementsByClassName("fechar-modal")[0];
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById("modal-imagem");
+            const imgAmpliada = document.getElementById("img-ampliada");
+            const modalLegenda = document.getElementById("modal-legenda");
+            const btnFechar = document.getElementById("btn-fechar");
 
-        // Adiciona evento de clique em todos os cards de fotos das galerias
-        document.querySelectorAll('.card-foto').forEach(card => {
-            card.addEventListener('click', function() {
-                const img = this.querySelector('img');
-                const caption = this.querySelector('figcaption');
-                
-                modal.style.display = "block";
-                imgAmpliada.src = img.src;
-                modalLegenda.innerText = caption ? caption.innerText : img.alt;
+            // Evento de clique para todos os cards de fotos da galeria
+            document.querySelectorAll('.card-foto').forEach(function(card) {
+                card.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    const caption = this.querySelector('figcaption');
+                    
+                    if (img) {
+                        imgAmpliada.src = img.src;
+                        modalLegenda.innerText = caption ? caption.innerText : img.alt;
+                        modal.classList.add('ativo');
+                    }
+                });
+            });
+
+            // Fechar ao clicar no X
+            btnFechar.addEventListener('click', function() {
+                modal.classList.remove('ativo');
+            });
+
+            // Fechar ao clicar fora da imagem
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('ativo');
+                }
             });
         });
-
-        // Fechar a imagem ampliada ao clicar no X
-        btnFechar.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // Fechar a imagem ampliada ao clicar fora dela (no fundo escuro)
-        modal.onclick = function(e) {
-            if (e.target !== imgAmpliada) {
-                modal.style.display = "none";
-            }
-        }
     </script>
 
 </body>
