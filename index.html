@@ -43,24 +43,18 @@
         }
 
         .simbolos-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            font-size: 2rem;
+            max-width: 750px;
+            width: 100%;
+            margin-bottom: 25px;
         }
 
-        .simbolo-badge {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 10px 15px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            backdrop-filter: blur(5px);
+        .img-simbolos-banner {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: block;
         }
 
         .portal-titulo {
@@ -226,15 +220,12 @@
 </head>
 <body>
 
-  <!-- TELA INICIAL / PORTAL -->
+    <!-- TELA INICIAL / PORTAL -->
     <header id="portal-inicial">
-        <!-- Substituição dos badges de texto pela imagem dos símbolos -->
+        <!-- IMAGEM DOS SÍMBOLOS DO PARANÁ -->
         <div class="simbolos-container">
-            <img src="simbolos.jpg" alt="Explorando Nossos Símbolos: Paraná" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin-bottom: 20px;">
+            <img src="simbolos.jpg" alt="Explorando Nossos Símbolos: Paraná" class="img-simbolos-banner">
         </div>
-
-        <h1 class="portal-titulo">Memória e Território</h1>
-        <p class="portal-subtitulo">Uma jornada pela formação histórica, social e cultural do Paraná. Escolha uma sala para iniciar sua visita.</p>
 
         <h1 class="portal-titulo">Memória e Território</h1>
         <p class="portal-subtitulo">Uma jornada pela formação histórica, social e cultural do Paraná. Escolha uma sala para iniciar sua visita.</p>
@@ -335,7 +326,7 @@
             <h2>Fronteiras em Chamas: Conflitos e Território</h2>
             <div class="text-content">
                 <p>A consolidação das fronteiras do Paraná e a posse da terra foram demarcadas por momentos violentos e disputas geopolíticas marcantes. Entre 1893 e 1894, a Revolução Federalista transformou a cidade da Lapa em um divisor de águas histórico no episódio conhecido como Cerco da Lapa, onde tropas conteram o avanço de maragatos em direção à capital do país.</p>
-                <p>Na região limítrofe entre Paraná e Santa Catarina, eclodiu a Guerra do Contestado (1912–1916), um conflito socio-religioso e messiânico liderado por figuras como o Monge João Maria. O conflito involved milhares de camponeses despossuídos e resultou no emprego de modernas tecnologias militares da época, incluindo o uso inédito da aviação em conflitos na América do Sul.</p>
+                <p>Na região limítrofe entre Paraná e Santa Catarina, eclodiu a Guerra do Contestado (1912–1916), um conflito socio-religioso e messiânico liderado por figuras como o Monge João Maria. O conflito envolveu milhares de camponeses despossuídos e resultou no emprego de modernas tecnologias militares da época, incluindo o uso inédito da aviação em conflitos na América do Sul.</p>
             </div>
 
             <h3 class="galeria-titulo">Acervo da Sala 4</h3>
